@@ -1,0 +1,54 @@
+{
+  "name": "hbs-ccli",
+  "version": "0.1.0",
+  "description": "config.js driven handlebars precompiler cli",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BriteSnow/node-hbs-cli.git"
+  },
+  "keyword": [
+    "postcss",
+    "cli",
+    "rollup"
+  ],
+  "dependencies": {
+    "@types/lodash.debounce": "^4.0.6",
+    "@types/minimist": "^1.2.1",
+    "chokidar": "^3.5.0",
+    "fs-extra-plus": "^0.5.20",
+    "handlebars": "^4.7.6",
+    "htmlparser2": "^6.0.0",
+    "lodash.debounce": "^4.0.8",
+    "minimist": "^1.2.5",
+    "utils-min": "^0.1.17"
+  },
+  "devDependencies": {
+    "@types/mocha": "^8.0.4",
+    "execa": "^5.0.0",
+    "mocha": "^8.2.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
+  },
+  "bin": {
+    "hbs": "./dist/bin-hbs.js"
+  },
+  "files": [
+    "src/",
+    "dist/"
+  ],
+  "scripts": {
+    "test": "TS_NODE_FILES=true ./node_modules/.bin/mocha -p ./test/tsconfig.json ./test/src/*.spec.ts",
+    "testw": "TS_NODE_FILES=true ./node_modules/.bin/mocha -p ./test/tsconfig.json ./test/src/*.spec.ts --watch --watch-files './test/**/*.ts','./src/**/*.ts'",
+    "prepack": "node_modules/.bin/rimraf ./dist && ./node_modules/.bin/tsc"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "author": "Jeremy Chone <jeremy.chone@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BriteSnow/hbs-cli/issues"
+  }
+}
