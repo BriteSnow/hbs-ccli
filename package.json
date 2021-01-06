@@ -1,6 +1,6 @@
 {
   "name": "hbs-ccli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "config.js driven handlebars precompiler cli",
   "main": "dist/index.js",
   "repository": {

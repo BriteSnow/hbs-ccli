@@ -1,4 +1,4 @@
-import { glob, mkdirs, readFile, saferRemove, writeFile } from 'fs-extra-plus';
+import { glob, mkdirs, pathExists, readFile, unlink, writeFile } from 'fs-extra-plus';
 import * as Path from 'path';
 import { hbsPecompile } from './hbs';
 
@@ -20,7 +20,9 @@ export async function tmplFiles(files: string[], distFile: string) {
 	const outDir = Path.dirname(distFile);
 	await mkdirs(outDir);
 
-	await saferRemove([distFile]);
+	if (await pathExists(distFile)) {
+		await unlink(distFile);
+	}
 
 	const templateContent = [];
 
@@ -31,6 +33,7 @@ export async function tmplFiles(files: string[], distFile: string) {
 	}
 
 	await writeFile(distFile, templateContent.join("\n"), "utf8");
+	console.log(`hbs-ccli - template file generated -  ${distFile}`);
 }
 
 async function resolveGlobs(globs: string | string[]) {
